@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en"xmlns:th="http://www.thymLeaf.org" th:replace="base::Layout(~{::section})">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loginpage</title>
+</head>
+<body>
+    <section>
+
+      <div class="login-popup-wrap new_login_popup"> 
+        <div class="login-popup-heading text-center">
+            <h4><i class="fa fa-lock" aria-hidden="true"></i> Login </h4>  
+                <div th:if="${param.error}" class="alert alert-danger">
+                    invalid username and password
+                </div>  
+                <div th:if="${param.logout}" class="alert alert-success">
+                    You have been logout!
+                </div>                 
+        </div>
+
+        <form id="loginMember" role="form" th:action="@{/dologin}" action="#" method="post">
+            <div class="form-group">
+                <input type="text" class="form-control" id="user_id" placeholder="e-mail..." name="username">
+            </div>
+            <div class="form-group">
+                <input type="password" class="form-control" id="password" placeholder="Password..." name="password">
+            </div>
+            <button type="submit" class="btn btn-default login-popup-btn" name="submit" value="1">Login</button>
+        </form>
+        <div class="form-group text-center">
+        <a class="pwd-forget" href="javascript:void(0)" id="open_forgotPassword">Forget Password</a>
+        </div>
+        <div class="text-center">Not registered yet?<a th:href="@{/signup}">click here</a></div>
+    </div>
+    </section>
+</body>
+</html>
